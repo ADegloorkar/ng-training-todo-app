@@ -2,36 +2,27 @@ import { Injectable } from '@angular/core';
 
 export interface Task {
   id: number;
-  name: string;
-  description: string;
+  assignedTo: string;
+  status: string;
   dueDate: string;
+  priority: string;
+  description: string;
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TaskService {
-  private tasks: Task[] = [
-    { id: 1, name: 'Learn Angular', description: 'Understand basics of Angular', dueDate: '2025-01-20' },
+  private tasks = [
+    { id: 1, assignedTo: 'User 1', status: 'Completed', dueDate: '2024-12-10', priority: 'Low', description: 'Task 1' },
+    { id: 2, assignedTo: 'User 2', status: 'In Progress', dueDate: '2024-09-14', priority: 'High', description: 'Task 2' }
   ];
 
-  getTasks(): Task[] {
+  getTasks() {
     return this.tasks;
   }
 
-  addTask(task: Task): void {
-    this.tasks.push(task);
-  }
-
-  updateTask(id: number, updatedTask: Task): void {
-    const index = this.tasks.findIndex((task) => task.id === id);
-    if (index !== -1) {
-      this.tasks[index] = updatedTask;
-    }
-  }
-
-  deleteTask(id: number): void {
+  deleteTask(id:number):void {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 }
-

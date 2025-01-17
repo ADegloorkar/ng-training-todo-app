@@ -1,19 +1,45 @@
-<div class="task-form">
-    <h2>Task Form</h2>
-    <form (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Task Name</label>
-        <input type="text" id="name" [(ngModel)]="task.name" name="name" class="form-control" required />
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" [(ngModel)]="task.description" name="description" class="form-control"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="dueDate">Due Date</label>
-        <input type="date" id="dueDate" [(ngModel)]="task.dueDate" name="dueDate" class="form-control" />
-      </div>
-      <button type="submit" class="btn btn-success">Save Task</button>
-    </form>
-  </div>
-  
+<mat-dialog-content>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Assigned To</mat-label>
+      <mat-select [(ngModel)]="data.assignedTo" name="assignedTo">
+        <mat-option *ngFor="let user of ['User 1', 'User 2', 'User 3']" [value]="user">{{ user }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="data.status" name="status">
+        <mat-option value="Not Started">Not Started</mat-option>
+        <mat-option value="In Progress">In Progress</mat-option>
+        <mat-option value="Completed">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.dueDate" name="dueDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Priority</mat-label>
+      <mat-select [(ngModel)]="data.priority" name="priority">
+        <mat-option value="Low">Low</mat-option>
+        <mat-option value="Normal">Normal</mat-option>
+        <mat-option value="High">High</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="data.description" name="description"></textarea>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button color="primary" (click)="onSave()">Save</button>
+    </div>
+  </form>
+</mat-dialog-content>

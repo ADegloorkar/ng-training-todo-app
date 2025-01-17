@@ -1,0 +1,30 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .task-list table {
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .task-list {
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
+  .btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    .btn {
+      padding: 15px 20px;
+      font-size: 16px;
+    }
+  }
+  
+  

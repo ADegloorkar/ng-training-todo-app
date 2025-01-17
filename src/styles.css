@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field {
+    color: black; /* Ensure the text is visible */
+  }
+  
+  mat-label {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87); /* Default label color */
+  }
+  

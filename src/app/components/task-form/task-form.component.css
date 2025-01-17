@@ -1,0 +1,24 @@
+.task-form{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@media (min-width:768px) {
+    .task-form {
+        max-width: 700px;
+    }
+    
+}
+.btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    .btn {
+      padding: 15px 20px;
+      font-size: 16px;
+    }
+  }
+  
+  

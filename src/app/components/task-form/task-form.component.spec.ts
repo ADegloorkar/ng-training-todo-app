@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskFormComponent } from './task-form.component';
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
+    declarations: [TaskFormComponent]  // Use 'declarations' instead of 'imports'
+  })
+  .compileComponents();
+});
 
 describe('TaskFormComponent', () => {
   let component: TaskFormComponent;

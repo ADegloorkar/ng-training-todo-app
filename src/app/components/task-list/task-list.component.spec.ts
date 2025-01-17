@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListComponent } from './task-list.component';
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
+    declarations: [TaskListComponent]  // Use 'declarations' instead of 'imports'
+  })
+  .compileComponents();
+});
 
 describe('TaskListComponent', () => {
   let component: TaskListComponent;

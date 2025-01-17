@@ -1,26 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TaskService, Task } from '../../services/task.service';
+import { Component, Inject } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Task } from "../../services/task.service";
 
-@Component({
-  selector: 'app-task-form',
-  templateUrl: './task-form.component.html',
-  styleUrls:  ['./task-form.component.css'],
+@Component ({
+selector:'app-task-form',
+templateUrl:'./task-form.component.html',
+  styleUrls: ['./task-form.component.css'],
 })
-export class TaskFormComponent implements OnInit{
-
-  @Input() task:Task ={id:0, name: '', description:'',dueDate:''};
-
-  constructor(private taskService:TaskService){}
-  ngOnInit(): void {}
-
-  onSubmit(): void {
-    if (this.task.id) {
-      this.taskService.updateTask(this.task.id, this.task);
-    } else {
-      this.task.id = Math.floor(Math.random() * 1000); // Mock ID
-      this.taskService.addTask(this.task);
-    }
-    this.task = { id: 0, name: '', description: '', dueDate: '' }; // Reset form
+export class TaskFormComponent {
+  constructor(
+    public dialogRef: MatDialogRef<TaskFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.data =this.data || {
+      assignedTo:'',
+      status: '',
+      dueDate: null,
+      priority: '',
+      description: ''
+    };
+    
   }
-
+  onCancel(): void {
+    this.dialogRef.close();
+    console.log("Cancle clicked")
+  }
+  onSave(): void {
+    // Save the task (data object)
+    this.dialogRef.close(this.data);
+    console.log('Task saved: ', this.data);
+  }
+ 
+  
 }
